@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>欢迎来到{{name}}的个人博客学习！</h2>
+        <button @click="showinfo1">点我提示信息1</button>
+        <button @click="showinfo2($event,88)">点我提示信息2</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: '苏铨幸',
+                }
+            },
+            methods: {
+                showinfo1(event) {
+                    alert('同学你好1')
+                },
+                showinfo2(event, number) {
+                    console.log(event, number);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

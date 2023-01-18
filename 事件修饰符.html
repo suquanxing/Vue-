@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<style>
+    * {
+        margin-top: 10px;
+    }
+
+    .demo1 {
+        height: 50px;
+        width: 600px;
+        background-color: skyblue;
+    }
+
+    .div1 {
+        padding: 20px;
+        background-color: #ccc;
+    }
+
+    .div2 {
+        padding: 20px;
+        background-color: #555;
+    }
+
+    .list {
+        overflow: auto;
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+    }
+
+    .list li {
+        height: 60px;
+        background-color: #555;
+    }
+</style>
+
+<body>
+    <div id="root">
+        <h1>欢迎来到{{name}}的空间！</h1>
+        <a href="http://www.qq.com" @click.stop.prevent="showinfo1">腾讯网</a>
+
+        <div @click.prevent="showinfo1" class="demo1">
+            <button @click.prevent.stop="showinfo1">点我提示信息1</button>
+        </div>
+        <button @click.once="showinfo1">点我提示信息2</button>
+        <div class="div1" @click="showMsg(1)">
+            div1
+            <div class="div2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+
+        <div @click.self="showinfo1" class="demo1">
+            <button @click="showinfo1">点我提示信息1</button>
+        </div>
+
+        <ul @wheel.passive="scl" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+
+
+
+
+    <script>
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'suquanxing'
+                }
+            },
+            methods: {
+                showinfo1(e) {
+                    alert('你好呀')
+                    // e.preventDefault();
+                    console.log(e.target);
+
+                },
+                showMsg(msg) {
+                    console.log(msg);
+                },
+                scl() {
+                    // console.log('正在滚动！');
+                    for (let index = 0; index < 10000; index++) {
+                        console.log('#');
+                    }
+                    console.log('累坏了');
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

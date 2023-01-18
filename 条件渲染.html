@@ -1,0 +1,42 @@
+<!--
+ * @Author: suquanxing 437898905@qq.com
+ * @Date: 2023-01-16 12:35:46
+ * @LastEditors: suquanxing 437898905@qq.com
+ * @LastEditTime: 2023-01-16 19:47:35
+ * @FilePath: \Vue\条件渲染.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1 v-show="a">当前的值为{{n}}</h1>
+        <button @click="n++">点我n+1</button>
+        <template v-if="n===2">
+            <h1>react</h1>
+            <h1>angular</h1>
+            <h1>vue</h1>
+        </template>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                n: 1,
+                a: true
+            }
+        })
+    </script>
+</body>
+
+</html>

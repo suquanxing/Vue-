@@ -1,0 +1,105 @@
+<!--
+ * @Author: suquanxing 437898905@qq.com
+ * @Date: 2023-01-15 22:56:04
+ * @LastEditors: suquanxing 437898905@qq.com
+ * @LastEditTime: 2023-01-16 12:30:51
+ * @FilePath: \Vue\绑定样式.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+
+    <style>
+        .basic {
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .happy {
+            width: 400px;
+            height: 100px;
+            background-color: blue;
+        }
+
+        .sad {
+            width: 400px;
+            height: 100px;
+            background-color: green;
+        }
+
+        .normal {
+            width: 400px;
+            height: 100px;
+            color: red;
+            background-color: skyblue
+        }
+
+        .quan1 {
+            width: 400px;
+            height: 100px;
+            background-color: rgb(145, 216, 53);
+        }
+
+        .quan2 {
+            font-size: 20px;
+            color: brown;
+        }
+
+        .quan3 {
+            width: 400px;
+            height: 100px;
+            background-color: rgb(141, 31, 31);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div @click="changeMood" :class="mood" class="basic">
+            {{name}}
+        </div>
+        <br><br>
+        <div class="basic" :class="classArr">
+            {{name}}
+        </div>
+        <br><br>
+        <div class="basic" :style="styleObj">
+            {{name}}
+        </div>
+    </div>
+
+    <script>
+        // 创建一个vue实例
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'suquan',
+                mood: 'normal',//样式定义 
+                classArr: ['quan1', 'quan2', 'quan3'],
+                styleObj: {
+                    fontSize: '40px',//不懂为什么要加引号！
+                    color: 'pink',
+                    backgroundColor: 'orange'
+                }
+            },
+            methods: {
+                changeMood() {
+                    const arr = ['sad', 'happy', 'normal']
+                    const index = Math.floor(Math.random() * 3)
+                    this.mood = arr[index]
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
