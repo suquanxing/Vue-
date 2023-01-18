@@ -12,10 +12,10 @@
 <body>
     <div id="root">
         <h1>{{name}}</h1>
-        <button @click.once="add">添加一个老刘</button>
+        搜索关键词：<input type="text">
         <ul>
             <li v-for="(p,index) of arr" :key="p.id">
-                {{p.name}}-{{p.age}} <input type="text">
+                {{p.name}}-{{p.age}}
             </li>
 
         </ul>
@@ -28,20 +28,12 @@
             data: {
                 name: '人员列表',
                 arr: [
-                    { id: '001', name: '张三', age: 20 },
-                    { id: '002', name: '李四', age: 21 },
+                    { id: '001', name: '马冬梅', age: 20 },
+                    { id: '002', name: '周冬雨', age: 21 },
+                    { id: '003', name: '周杰伦', age: 22 },
+                    { id: '004', name: '温兆伦', age: 23 },
                 ],
 
-            },
-            methods: {
-                add() {
-                    const p = {
-                        id: '003',
-                        name: '老刘',
-                        age: 20
-                    }
-                    this.arr.unshift(p)
-                }
             },
         })
     </script>
