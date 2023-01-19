@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <h1>我的名字:{{name}}</h1>
+        <h2>我的学校:{{address}}</h2>
+        <hr>
+        <hr>
+        <h2>学生姓名:{{student.name}}</h2>
+        <h2>学生年龄:真实：{{student.age.rAge}},对外：{{student.age.sAge}}</h2>
+        <h2>学生的性别:{{student.sex}}</h2>
+        <h3>朋友们</h3>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{f.name}}-{{f.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'suquanxing',
+                address: '广东科技学院',
+                student: {
+                    name: 'susu',
+                    age: {
+                        rAge: 24,
+                        sAge: 18,
+                    },
+                    friends: [
+                        { name: 'zs', age: 23 },
+                        { name: 'ls', age: 25 },
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
