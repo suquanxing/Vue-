@@ -12,10 +12,10 @@
 <body>
     <div id="root">
         <h1>{{name}}</h1>
-        搜索关键词：<input type="text">
+        <input type="text" placeholder="请输入关键词" v-model="keywords">
         <ul>
-            <li v-for="(p,index) of arr" :key="p.id">
-                {{p.name}}-{{p.age}}
+            <li v-for="(p,index) of filarr" :key="index">
+                {{p.name}}-{{p.age}}-{{p.sex}}
             </li>
 
         </ul>
@@ -27,14 +27,26 @@
             el: '#root',
             data: {
                 name: '人员列表',
+                keywords: '',
                 arr: [
-                    { id: '001', name: '马冬梅', age: 20 },
-                    { id: '002', name: '周冬雨', age: 21 },
-                    { id: '003', name: '周杰伦', age: 22 },
-                    { id: '004', name: '温兆伦', age: 23 },
+                    { id: '001', name: '马冬梅', age: 20, sex: '女' },
+                    { id: '002', name: '周冬雨', age: 21, sex: '女' },
+                    { id: '003', name: '周杰伦', age: 22, sex: '男' },
+                    { id: '004', name: '温兆伦', age: 23, sex: '男' },
                 ],
+                filarr: [],
 
             },
+            watch: {
+                keywords: {
+                    immediate: true,
+                    handler(val) {
+                        this.filarr = this.arr.filter((p) => {
+                            return p.name.indexOf(val) !== -1
+                        })
+                    }
+                }
+            }
         })
     </script>
 </body>
