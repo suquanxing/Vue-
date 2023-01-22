@@ -11,22 +11,19 @@
 
 <body>
     <div id="root">
-        <h1>我的名字：{{name}}</h1>
-        <h2>我的学校是：{{school}}</h2>
+        <h1>点我{{n}}</h1>
+        <h1 v-once="">点我{{n}}</h1>
+
+        <button @click="n++">点我</button>
     </div>
 
-    
     <script>
-        let data = {
-            name: '书全新',
-            school: '广东科技学院'
-        }
-
-        let vm = new Vue({
+        new Vue({
             el: '#root',
-            data
+            data: {
+                n: 1,
+            }
         })
-        console.log(vm);
     </script>
 </body>
 

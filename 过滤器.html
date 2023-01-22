@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>现在的时间是：{{fmtTime}}</h2>
+        <h2>{{getNowTime()}}</h2>
+        <!-- 过滤器 -->
+        <h1>{{time | formater(YYYY-MM-DD)}}</h1>
+    </div>
+
+    <div id="root2">
+        <h1>{{msg}}</h1>
+    </div>
+
+
+    <script>
+        Vue.filter()
+
+
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    time: '33333333333333',
+                }
+            },
+            computed: {
+                fmtTime() {
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            methods: {
+                getNowTime() {
+                    return dayjs(this.time).format('YYYY_MM_DD HH:mm:ss')
+                }
+            },
+            filters: {
+                formater(value, str) {
+                    return dayjs(this.time).format(str)
+                },
+                myslice(value) {
+                    return value.slice(0, 4)
+                }
+            }
+        })
+
+        new Vue({
+            el: '#root2',
+            data: {
+                msg: 'suquanxing',
+            }
+        })
+    </script>
+</body>
+
+</html>
